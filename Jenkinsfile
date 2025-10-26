@@ -2,19 +2,19 @@ pipeline {
     agent any
 
     triggers {
-        pollSCM('H/5 * * * *')  // Проверява за промени на всеки 5 минути
+        pollSCM('H/5 * * * *')   // проверява за промени на всеки 5 минути
     }
 
     stages {
         stage('Build') {
             steps {
-                sh 'dotnet build --configuration Release'
+                bat 'dotnet build --configuration Release'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'dotnet test --no-build --configuration Release'
+                bat 'dotnet test --no-build --configuration Release'
             }
         }
     }
